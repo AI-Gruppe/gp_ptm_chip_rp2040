@@ -27,9 +27,9 @@ struct Watchdog {
 
     static constexpr auto initStepPeripheryEnable = list(Regs::CTRL::overrideDefaults(
       set(Regs::CTRL::enable),
-      clear(Regs::CTRL::pause_dbg0),
-      clear(Regs::CTRL::pause_dbg1),
-      clear(Regs::CTRL::pause_jtag),
+      set(Regs::CTRL::pause_dbg0),
+      set(Regs::CTRL::pause_dbg1),
+      set(Regs::CTRL::pause_jtag),
       write(Regs::CTRL::time, Kvasir::Register::value<ReadloadValue>())));
 
     static void feed() { apply(write(Regs::LOAD::load, Kvasir::Register::value<ReadloadValue>())); }
